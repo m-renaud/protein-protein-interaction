@@ -1,4 +1,8 @@
 *.ede
 main
+process_dataset
+time_executions
 *.a
 *.o
+*.pdb
+*.fasta
