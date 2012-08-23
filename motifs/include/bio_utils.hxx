@@ -1,3 +1,25 @@
+//m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Copyright 2012 Matthew R. Renaud
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+//m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// This file is part of Protein-protein-interaction.
+//
+// Protein-protein-interaction is free software: you can redistribute
+// it and/or modify it under the terms of the GNU General Public
+// License as published by the Free Software Foundation, either
+// version 3 of the License, or(at your option) any later version.
+//
+// Protein-protein-interaction is distributed in the hope that it will
+// be useful, but WITHOUT ANY WARRANTY; without even the implied
+// warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+// PURPOSE. See the GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Protein-protein-interaction. If not, see
+// <http://www.gnu.org/licenses/>.
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 #ifndef BIO_UTILS_HXX_
 #define BIO_UTILS_HXX_
 
@@ -10,7 +32,7 @@
 namespace mrr {
 namespace bio {
 
-// Structure to repersent a binary interaction complex 
+// Structure to repersent a binary interaction complex
 struct binary_complex
 {
   std::string name;
@@ -33,9 +55,9 @@ binary_dataset process_dataset_file(std::string const& filename)
   std::string line;
   std::string complex_name;
   std::array<char,2> chains;
-  
+
   binary_dataset dataset;
-  
+
 
   if(is.is_open())
   {
@@ -66,10 +88,10 @@ void remove_unneeded_chains(FastaType& complex, ChainListType const& chain_list)
       begin(complex.chains), end(complex.chains),
       [&](typename FastaType::chain_type const& chain)
       {
-	return std::find(
-	  begin(chain_list), end(chain_list),
-	  chain.chain_name
-	) != end(chain_list);
+        return std::find(
+          begin(chain_list), end(chain_list),
+          chain.chain_name
+        ) != end(chain_list);
       }
     ), end(complex.chains)
   );

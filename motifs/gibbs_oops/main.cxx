@@ -1,3 +1,25 @@
+//m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Copyright 2012 Matthew R. Renaud
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+//m=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// This file is part of Protein-protein-interaction.
+//
+// Protein-protein-interaction is free software: you can redistribute
+// it and/or modify it under the terms of the GNU General Public
+// License as published by the Free Software Foundation, either
+// version 3 of the License, or(at your option) any later version.
+//
+// Protein-protein-interaction is distributed in the hope that it will
+// be useful, but WITHOUT ANY WARRANTY; without even the implied
+// warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+// PURPOSE. See the GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Protein-protein-interaction. If not, see
+// <http://www.gnu.org/licenses/>.
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 #include <iostream>
 #include <algorithm>
 #include <set>
@@ -19,7 +41,7 @@ int main(int argc, char* argv[])
   if(argc != 3)
   {
     std::cerr << "Usage: " << argv[0]
-	      << " (default | <dataset_file> <dataset_directory>)\n";
+              << " (default | <dataset_file> <dataset_directory>)\n";
     exit(1);
   }
 
@@ -91,13 +113,13 @@ int main(int argc, char* argv[])
     for(mrr::bio::fasta_complex::chain_type const& chain : complex.chains)
     {
       std::cout << "    Adding sequence of length: " << chain.sequence.size()
-		<< std::endl;
+                << std::endl;
 
       if((chain.sequence.size() >= 100) && (all_sequences.size() < 30))
       {
-	all_sequences.push_back(chain.sequence.substr(0,100));
-	for(auto aa : *std::prev(std::end(all_sequences)))
-	  amino_acid_set.insert(std::toupper(aa));
+        all_sequences.push_back(chain.sequence.substr(0,100));
+        for(auto aa : *std::prev(std::end(all_sequences)))
+          amino_acid_set.insert(std::toupper(aa));
       }
     }
   }
