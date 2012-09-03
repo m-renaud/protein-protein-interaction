@@ -33,15 +33,17 @@
 #include <pdb_utils.hxx>
 #include <gibbs_sampler.hxx>
 
+void usage(std::string exe_name)
+{
+  std::cerr << "Usage: " << exe_name
+            << " (default | <dataset_file> <dataset_directory>) <iterations>\n";
+}
 
-// argv[1] - dataset file
-// argv[2] - dataset directory
 int main(int argc, char* argv[])
 {
-  if(argc != 3)
+  if(argc != 3 && argc != 4)
   {
-    std::cerr << "Usage: " << argv[0]
-              << " (default | <dataset_file> <dataset_directory>)\n";
+    usage(argv[0]);
     exit(1);
   }
 
@@ -60,16 +62,28 @@ int main(int argc, char* argv[])
     ss >> cycles;
 
     dataset_filename = "../../data_sets/zhuListNonObligate.txt";
-    dataset_directory = "../../data_sets/zhuNonObligate";
+    dataset_directory = "../../data_sets/zhuNonObligateFASTAFiles/";
   }
-  else
+  else if(argc == 4)
   {
+    std::stringstream ss;
+    ss << argv[3];
+    ss >> cycles;
+
     dataset_filename = argv[1];
     dataset_directory = argv[2];
   }
+  else
+  {
+    usage(argv[0]);
+    exit(1);
+  }
 
-  fasta_file_directory = dataset_directory + "FASTAFiles/";
+  fasta_file_directory = dataset_directory + "/";
+
+#if 0
   pdb_file_directory = dataset_directory + "PDBFiles/";
+#endif
 
   // String to hold the path to the protein complex currently being processed
   std::string protein_complex_path;

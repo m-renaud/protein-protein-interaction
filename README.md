@@ -76,7 +76,11 @@ can set it with `CXX=your_c++11_compiler make`
 This directory contains code that implements an OOPS model for Gibbs
 sampling.
 * Build the code with `CXX=your_c++11_compiler make`
-* Run it with `./main <dataset_file> <dataset_director>`
+* Run it with `./main <dataset_file> <dataset_director> <cycles>`
+* Alternatively run `./main default <cycles>` and set the default
+  directory in `main.cxx`
+* `<cycles>` is the number of iterations to run the algorithm for.
+
 
 ## `fasta_parser/` Directory ##
 This directory contains the library file for the FASTA parser.

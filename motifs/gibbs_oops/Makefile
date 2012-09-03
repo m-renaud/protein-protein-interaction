@@ -23,7 +23,7 @@ INCLUDE_DIR=../include
 
 LIBS=-lfasta_parser
 
-CXX_OPTS=-std=c++11 -I$(INCLUDE_DIR) -L$(LIB_DIR)
+CXX_OPTS=-std=c++11 -I$(INCLUDE_DIR) -L$(LIB_DIR) -Wall -Wextra
 
 _DEPS=bio_utils.hxx fasta_utils.hxx pdb_utils.hxx gibbs_sampler.hxx
 DEPS=$(patsubst %,$(INCLUDE_DIR)/%,$(_DEPS))
